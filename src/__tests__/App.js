@@ -1,6 +1,9 @@
-import App from './App';
-import { shallow } from 'enzyme'
-import { APPLICATION_TITLE } from './constants'
+import App from '../App';
+import { shallow, mount } from 'enzyme'
+import { 
+  APPLICATION_TITLE,
+  SEARCH_BTN_TEXT
+} from '../constants'
 
 describe('Landing page', () => {
   let wrapper
@@ -21,23 +24,18 @@ describe('Landing page', () => {
     expect(wrapper.find('#searchBtn').length).toBe(1)
   })
 
-  xit('test', () => {
-
+  it('searchBtn text should read Search', () => {
+    const searchBtn = wrapper.find('#searchBtn')
+    const searchBtnText = searchBtn.text()
+    expect(searchBtnText).toContain(SEARCH_BTN_TEXT)
   })
 })
 
 describe('Landing page interaction with user', () => {
-  it('test', () => {
-
-  })
-  it('test', () => {
-
-  })
-  it('test', () => {
-
-  })
-  it('test', () => {
-
+  it('searchResult component should have a #result container', () => {
+    const wrapper = mount(<App/>)
+    const resultContainer = wrapper.find('#result')
+    expect(resultContainer).toHaveLength(1)
   })
 })
 
